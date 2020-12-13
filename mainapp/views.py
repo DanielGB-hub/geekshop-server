@@ -10,8 +10,6 @@ def index(request):
     context = {
         'title': 'geek shop',
 
-        'style_link': 'css/index.css',
-
         'date': timezone.now()
 
     }
@@ -68,26 +66,3 @@ def products(request):
 
 
     return render(request, 'mainapp/products.html', context)
-
-
-def test_context(request):
-
-    context = {
-
-        'title': 'добро пожаловать',
-
-        'username': 'This User',
-
-        'products': [
-            {'name': 'Черное худи', 'price': '6 090 руб.'},
-            {'name': 'Джинсы', 'price': '5 800 руб.'},
-            {'name': 'Рюкзак', 'price': '2 000 руб.'}
-        ],
-        'promotion': True,
-
-        'promotion_products': [
-            {'name': 'Бандана', 'price': '1 500 руб.'}
-        ]
-    }
-
-    return render(request, 'mainapp/context.html', context)
