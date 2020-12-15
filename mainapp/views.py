@@ -3,6 +3,7 @@ from django.utils import timezone
 from mainapp.models import ProductCategory, Product
 
 
+
 def index(request):
 
     context = {
@@ -27,4 +28,6 @@ def products(request):
         'categories': ProductCategory.objects.all()
     }
 
+
     return render(request, 'mainapp/products.html', context)
+  
