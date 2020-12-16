@@ -1,3 +1,4 @@
+# просто строка для пересоздания ветки в гит
 from django.db import models
 
 class ProductCategory(models.Model):
