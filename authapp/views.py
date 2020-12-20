@@ -17,8 +17,6 @@ def login(request):
 
     context = {
         'title': 'авторизация',
-        'style_link': 'css/auth.css',
-        'script_link': 'js/auth.js',
 
         'form': form
     }
@@ -42,8 +40,6 @@ def register(request):
 
     context = {
         'title': 'регистрация',
-        'style_link': 'css/auth.css',
-        'script_link': 'js/auth.js',
 
         'form': reg_form
     }
