@@ -15,7 +15,7 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def products(request):
+def products(request, pk=None):
 
     context = {
         'title': 'geek shop - каталог',
