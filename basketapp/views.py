@@ -53,3 +53,21 @@ def basket_edit(request, id, quantity):
         return JsonResponse({'result': result})
 
 
+@login_required
+def basket_edit(request, id, quantity):
+    if request.is_ajax():
+        quantity = int(quantity)
+        basket = Basket.objects.get(id=int(id))
+        if quantity > 0:
+            basket.quantity = quantity
+            basket.save()
+        else:
+            basket.delete()
+        baskets = Basket.objects.filter(user=request.user)
+        context = {
+            'baskets': baskets,
+        }
+        result = render_to_string('basketapp/basket.html', context)
+        return JsonResponse({'result': result})
+
+

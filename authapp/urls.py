@@ -12,7 +12,7 @@ urlpatterns = [
     path('logout', authapp_views.logout, name='logout'),
     path('register/', authapp_views.register, name='register'),
     path('profile/', authapp_views.profile, name='profile'),
-    path('auth/', include('mainapp.urls', ))
+    #path('auth/', include('mainapp.urls', ))
 
 ]
 
