@@ -1,41 +1,27 @@
 {% load staticfiles %}
 
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-
-    <title>{% block title %}{% endblock %}</title>
-
-    <link rel="icon" href="{% static 'img/pycharm-PyCharm_400x400_Twitter_logo_white.png' %}" sizes="16x16"
-          type="image/png">
+    <title>
+        {% block title %}
+            {{ title|title }}
+        {% endblock %}
+    </title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-    {% block style %}{% endblock %}
-
-    {#      В нашем случае скрипты идентичны, но может возникнуть необходимость подключить к странице собственный #}
-    {#      скрипт, так что заранее подготовлю блок на такой случай #}
-    {% block script %}{% endblock %}
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- FontAwesome script -->
-    <script src="{% static 'vendor/fontawesome/fontawesome-icons.js' %}" crossorigin="anonymous" defer></script>
-
-    <!-- Basket script -->
-    <script src="{% static 'js/basket.js' %}"></script>
-
-
+    <!-- Custom styles for this template -->
+    {% block css %}{% endblock %}
 </head>
+
 <body>
 
 <!-- Navigation -->
@@ -49,7 +35,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'mainapp:products' %}">Каталог <i class="fas fa-shopping-bag"></i></a>
+                    <a class="nav-link" href="{% url 'products:index' %}">Каталог <i
+                            class="fas fa-shopping-bag"></i></a>
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -73,16 +60,26 @@
                         <a class="nav-link" href="{% url 'auth:login' %}">Войти <i class="fas fa-sign-in-alt"></i></a>
                     </li>
                 {% endif %}
-
-
             </ul>
         </div>
     </div>
 </nav>
 
+<!-- Content -->
 {% block content %}{% endblock %}
 
+<!-- Footer -->
 {% block footer %}{% endblock %}
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- FontAwesome script -->
+<script src="{% static 'vendor/fontawesome/fontawesome-icons.js' %}" crossorigin="anonymous"></script>
+
+<!-- Basket script -->
+<script src="{% static 'js/basket.js' %}"></script>
 
 </body>
 </html>
